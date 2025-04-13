@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+        body {
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        body {
+    background: #000; /* Solid background */
+    position: relative;
+    
+}
+
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('image.jpg') repeat; /* Add a sparkle texture image or generate with CSS */
+    z-index: -1;
+    opacity: 0.1;
+    animation: sparkleAnimation 5s infinite;
+}
+
+@keyframes sparkleAnimation {
+    0% { background-position: 0 0; }
+    50% { background-position: 50% 50%; }
+    100% { background-position: 0 100%; }
+}
+nav {
+    width: 100%;
+    height: 10vh;
+    position: sticky;
+
+}
+.nav-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo {
+    color: #facc15;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.logo span {
+    color: #facc15;
+    text-shadow: 0 0 10px rgb(109, 67, 0);
+}
+.hamburg, .cancel {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: rgb(248, 244, 244);
+    font-size: 2rem;
+    display: none;
+}
+.nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+.nav-container .links a {
+    position: relative;
+    font-size: 1.2rem;
+    color: rgb(253, 251, 251);
+    text-decoration: none;
+    font-weight: 500;
+    transform: 0.3s linear;
+}
+.nav-container .links a::before {
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #facc15;
+    transition: 0.2s linear;
+}
+.nav-container .links a:hover::before {
+    width: 100%;
+}
+.nav-container .contact-btn {
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid #facc15;
+    transition: 0.2s linear;
+}
+.nav-container .contact-btn a {
+    color: white;
+    transition: 0.3s linear;
+}
+.nav-container .contact-btn:hover, .nav-container .contact-btn:hover a {
+    background-color: #facc15;
+    color: white;
+}
+.nav-container .links a:hover {
+    color: #facc15;
+}
+.dropdown {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: brightness(40%) blur(3px);
+    box-shadow: 0 0 20px rgb(248, 247, 247);
+    transition: 0.2s linear;
+}
+.dropdown .links a {
+    color: white;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+    transition: 0.2s linear;
+}
+.dropdown .links a:hover {
+    background-color: #facc15;
+}
+        .container {
+            text-align: center;
+        }
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #facc15;
+        }
+        .projects {
+            display: flex;
+            gap: 20px;
+        }
+        .project-card {
+            position: relative;
+            width: 320px;
+            background: #ffffff;
+            color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px #facc15;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .project-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .project-description {
+            font-size: 1rem;
+            color: #000;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .project-card:hover .overlay {
+            opacity: 1;
+        }
+        .modal {
+            padding: 4%;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+          
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal img {
+            margin-top: 20px;
+            max-width: 100%;
+            box-shadow: 0 0 15px #facc15;
+            max-height: 80%;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .nav-buttons button {
+        margin-top: 300px;
+            background: rgb(253, 253, 253);
+            color: #000000;
+            border: none;
+            box-shadow: 0 0 2px #000000;
+            padding: 5px 10px;
+            font-size: 0.6rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #modalTitle{
+            color: #facc15;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>Portfolio</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="intropage.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="skills.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="services.html">Services</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="projectgallery.html">Projects</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contactus.html">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="intropage.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="services.html">Services</a>
+                <a href="projectgallery.html">Projects</a>
+           <a href="contactus.html">Contact Us</a>
+                     <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="title">My Projects</h1>
+        <div class="projects">
+            <div class="project-card" onclick="openGallery(1, 'Crime Management System', 'A platform for tracking and managing crimes, with a database of crime details, suspects, and case progress, ideal for investigators and crime enthusiasts.')">
+                <img src="crime.jpg" alt="Project 1">
+                <div class="overlay">Tap to View Gallery</div>
+                <div class="project-info">
+                    <h2 class="project-title">Crime Management System</h2>
+                    <p class="project-description">A platform for tracking and managing crimes, with a database of crime details, suspects, and case progress, ideal for investigators and crime enthusiasts.</p>
+                </div>
+            </div>
+            <div class="project-card" onclick="openGallery(2, 'Seoul Series', 'A platform for streaming and exploring popular Korean dramas, with episode summaries, cast info, and seamless navigation for fans.')">
+                <img src="drama.jpg" alt="Project 2">
+                <div class="overlay">Tap to View Gallery</div>
+                <div class="project-info">
+                    <h2 class="project-title">Seoul Series</h2>
+                    <p class="project-description">A platform for streaming and exploring popular Korean dramas, with episode summaries, cast info, and seamless navigation for fans.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="galleryModal">
+        <button class="close-btn" onclick="closeGallery()">X</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+        <div class="nav-buttons">
+            <button onclick="prevImage()">Previous</button>
+            <button onclick="nextImage()">Next</button>
+        </div>
+        <img id="galleryImage" src="">
+    </div>
+    
+    <script>
+        const projectImages = {
+            1: ["crime.jpg", "crime1.jpg", "crime2.jpg", "crime3.jpg", "crime4.jpg"],
+            2: ["drama.jpg", "drama1.jpg", "drama2.jpg"]
+        };
+        let currentIndex = 0;
+        let currentProject = [];
+        
+        function openGallery(projectId, title, description) {
+            currentProject = projectImages[projectId];
+            currentIndex = 0;
+            updateGallery();
+            document.getElementById("modalTitle").innerText = title;
+            document.getElementById("modalDescription").innerText = description;
+            document.getElementById("galleryModal").style.display = "flex";
+        }
+        
+        function updateGallery() {
+            const imageElement = document.getElementById("galleryImage");
+            imageElement.style.opacity = 0;
+            setTimeout(() => {
+                imageElement.src = currentProject[currentIndex];
+                imageElement.style.opacity = 1;
+            }, 300);
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % currentProject.length;
+            updateGallery();
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + currentProject.length) % currentProject.length;
+            updateGallery();
+        }
+        
+        function closeGallery() {
+            document.getElementById("galleryModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

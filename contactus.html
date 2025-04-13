@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #ffffff;
+   
+}
+body {
+    background: #000; /* Solid background */
+    position: relative;
+    
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('image.jpg') repeat; /* Add a sparkle texture image or generate with CSS */
+    z-index: -1;
+    opacity: 0.1;
+    animation: sparkleAnimation 5s infinite;
+}
+
+@keyframes sparkleAnimation {
+    0% { background-position: 0 0; }
+    50% { background-position: 50% 50%; }
+    100% { background-position: 0 100%; }
+}
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0));
+}
+nav {
+    width: 100%;
+    margin-top: -45px;
+    position: fixed;
+}
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo {
+    color: #facc15;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+.logo span {
+    color: #facc15;
+    text-shadow: 0 0 10px rgb(109, 67, 0);
+}
+.hamburg, .cancel {
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: rgb(248, 244, 244);
+    font-size: 2rem;
+    display: none;
+}
+.nav-container .links {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+.nav-container .links a {
+    position: relative;
+    font-size: 1.2rem;
+    color: rgb(253, 251, 251);
+    text-decoration: none;
+    font-weight: 500;
+    transform: 0.3s linear;
+}
+.nav-container .links a::before {
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #facc15;
+    transition: 0.2s linear;
+}
+.nav-container .links a:hover::before {
+    width: 100%;
+}
+.nav-container .contact-btn {
+    background-color: transparent;
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: 2px solid #facc15;
+    transition: 0.2s linear;
+}
+.nav-container .contact-btn a {
+    color: white;
+    transition: 0.3s linear;
+}
+.nav-container .contact-btn:hover, .nav-container .contact-btn:hover a {
+    background-color: #facc15;
+    color: white;
+}
+.nav-container .links a:hover {
+    color: #facc15;
+}
+.dropdown {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: brightness(40%) blur(3px);
+    box-shadow: 0 0 20px rgb(248, 247, 247);
+    transition: 0.2s linear;
+}
+.dropdown .links a {
+    color: white;
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+    transition: 0.2s linear;
+}
+.dropdown .links a:hover {
+    background-color: #facc15;
+}
+.container {
+    width: 90%;
+height: 90%;
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: solid 10px rgb(255, 255, 255) ; /* White shadow effect */
+    padding: 20px; /* Inner spacing */
+}
+
+p{
+    font-size: 12px;
+}
+h1{
+    font-family: Verdana, Geneva, Tahoma, sans-serif!important;
+}
+.bg-primary{
+    background-color: #facc15 !important;
+    color: #000;
+    font-family:Verdana, Geneva, Tahoma, sans-serif!important;
+
+}
+.form-control {
+    height: 36px;
+    background: #ffffff;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 2px;
+    box-shadow: none !important;
+    border: 1px solid white;
+}
+.contactForm .form-control {
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    padding: 0;
+}
+
+
+.form-control:focus,.form-control:active {
+    border-color: #facc15 !important;
+}
+.form-label {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.btn.btn-primary {
+    background: #facc15 !important;
+    border-color: #facc15 !important;
+    color: #000000;
+    width: 100px;
+    border-radius: 0!important;
+    
+}
+.btn.btn-primary:hover{
+    background-color: #facc15!important;
+}
+
+.bi{
+    font-size: 50px;
+}
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 100%!important;
+        padding-bottom: 207px!important;
+    }
+  }
+</style>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>Portfolio</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="intropage.html">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="about.html">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="skills.html">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="services.html">Services</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="projectgallery.html">Projects</a></div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600"><a href="contactus.html">Contact Us</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="intropage.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="services.html">Services</a>
+                <a href="projectgallery.html">Projects</a>
+           <a href="contactus.html">Contact Us</a>
+                     <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5 shadow ">
+        <div class="row">
+            <div class="col-md-4 bg-primary p-5 text-white order-sm-first order-last">
+                <h2>Let's get in touch</h2>
+                <p>We're open for any suggestion or just to have a chat</p>
+                <div class="d-flex mt-2">
+                    <i class="bi bi-geo-alt"></i>
+                    <p class="mt-3 ms-3">Address : Village Tibbi Ghous Post Office Narrowali, Tehsil and District Gujrat</p>
+                </div>
+                <div class="d-flex mt-2">
+                    <i class="bi bi-telephone-forward"></i>
+                    <p class="mt-4 ms-3">Phone : +92 3140000000</p>
+                </div>
+                <div class="d-flex mt-2">
+                    <i class="bi bi-envelope"></i>
+                    <p class="mt-4 ms-3">Email : amna1402004@gmail.com</p>
+                </div>
+            </div>
+            <div class="col-md-8 p-5">
+                <h2>Get in touch</h2>
+                <form class="row g-3 contactForm mt-4">
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">First Name</label>
+                      <input type="email" class="form-control" id="inputEmail4" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">Last Name</label>
+                      <input type="password" class="form-control" id="inputPassword4" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label">Subject</label>
+                      <input type="text" class="form-control" id="inputAddress" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Email Id</label>
+                        <input type="text" class="form-control" id="inputAddress" required>
+                      </div>
+                    <div class="col-md-6">
+                      <label for="inputCity" class="form-label">City</label>
+                      <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Contact Number</label>
+                        <input type="text" class="form-control" id="inputCity" required>
+                      </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary mt-3">Sign in</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
